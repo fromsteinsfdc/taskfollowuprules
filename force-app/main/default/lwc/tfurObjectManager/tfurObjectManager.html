@@ -1,0 +1,6 @@
+<template>
+    <c-fsc_object-selector label={label} onchange={handleObjectChange} allow-multiselect={allowMultiselect} value={objectValue} required></c-fsc_object-selector>
+    <template if:true={showFieldSelector}>
+        <c-fsc_field-selector2 label="Select User Field To Assign To" onchange={handleFieldChange} value={fieldValue} available-field-types="Reference" available-reference-types="User" object-name={objectValue} required></c-fsc_field-selector2>
+    </template>
+</template>
