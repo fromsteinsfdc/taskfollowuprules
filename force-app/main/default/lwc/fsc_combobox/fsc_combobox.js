@@ -380,7 +380,6 @@ export default class OptionSelector extends LightningElement {
 
     unselectOption(index) {
         this.values = [...this.values.slice(0, index), ...this.values.slice(Number(index) + 1)];
-        console.log(JSON.stringify(this.values));
         this.dispatchOptions();
     }
 
@@ -390,7 +389,6 @@ export default class OptionSelector extends LightningElement {
             values: this.values,
             //selectedOptions: this.selectedOptions
         }
-        console.log('dispatching '+ JSON.stringify(detail));
         this.dispatchEvent(new CustomEvent('change', { detail }));
     }
 
@@ -452,16 +450,13 @@ export default class OptionSelector extends LightningElement {
     }
 
     handleSearchBlur() {
-        console.log('in handleblur');
         if (this.inputElement.value && !this.showSelectedValue) {
-            console.log('looking for matchingValue for '+ this.inputElement.value)
             let matchingValue = this.options.find(option => option.value?.toLowerCase() == this.inputElement.value?.toLowerCase());
             // let matchingValue = this.options.find(option => {
             //     console.log('searching option: '+ JSON.stringify(option) +', comparing it to '+ this.inputElement.value);
             //     return option.value?.toLowerCase() == this.inputElement.value?.toLowerCase()
             // });
             if (matchingValue) {
-                console.log('found matchingValue '+ JSON.stringify(matchingValue));
                 this.selectOption(matchingValue.index);
             }
         }
